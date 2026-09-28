@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Health Copilot — Executive Wealth & Risk Intelligence</title>
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* ============================================================ */
+    /* ENTERPRISE MINIMAL GRAPHIC DESIGN SYSTEM                      */
+    /* Inspired by modern SaaS Executive Intelligence aesthetic     */
+    /* ============================================================ */
+    :root {
+      --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Canvas & Card Surfaces */
+      --surface-canvas: #F6F8FA;
+      --surface-card: #FFFFFF;
+      --surface-subtle: #F8F9FB;
+      --surface-hover: #F1F3F7;
+      
+      /* Dark Sidebar Palette */
+      --bg-sidebar: #141221;
+      --bg-sidebar-active: #25203D;
+      --bg-sidebar-hover: #1E1A33;
+      --text-sidebar: #8E8A9F;
+      --text-sidebar-active: #FFFFFF;
+      --border-sidebar: #221E36;
+      
+      /* Brand Primary (Purple/Indigo SaaS Accent) */
+      --primary: #5E43F3;
+      --primary-hover: #4F35E2;
+      --primary-soft: #F0EDFE;
+      --primary-light: #EDE9FE;
+      
+      /* Accent Palettes */
+      --accent-blue: #0284C7;
+      --accent-teal: #0D9488;
+      --accent-purple: #7C3AED;
+      --accent-pink: #EC4899;
+      
+      /* Status Colors (Subtle & Executive) */
+      --success: #16A34A;
+      --success-bg: #DCFCE7;
+      --success-text: #15803D;
+      --success-border: #BBF7D0;
+      
+      --warning: #D97706;
+      --warning-bg: #FEF3C7;
+      --warning-text: #B45309;
+      --warning-border: #FDE68A;
+      
+      --danger: #DC2626;
+      --danger-bg: #FEE2E2;
+      --danger-text: #B91C1C;
+      --danger-border: #FECACA;
+      
+      --info-bg: #E0F2FE;
+      --info-text: #0369A1;
+      --info-border: #BAE6FD;
+      
+      /* Neutral Typography */
+      --text-main: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --text-dim: #94A3B8;
+      
+      /* Borders & Dividers */
+      --border: #E2E8F0;
+      --border-subtle: #ECEEF2;
+      --border-card: #ECEEF2;
+      --border-input: #E2E4E9;
+      
+      /* Radii & Elevations */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 18px;
+      --radius-2xl: 22px;
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+      --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.02), 0 4px 12px rgba(0, 0, 0, 0.025);
+      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      --shadow-drawer: -8px 0 32px rgba(0, 0, 0, 0.12);
+      --shadow-float: 0 12px 28px -4px rgba(20, 18, 33, 0.25);
+    }
+
+    /* Dark Mode Override */
+    [data-theme="dark"] {
+      --surface-canvas: #0B0E14;
+      --surface-card: #121722;
+      --surface-subtle: #18202F;
+      --surface-hover: #1E293B;
+      --border: #243044;
+      --border-subtle: #1E293B;
+      --border-card: #202B3D;
+      --border-input: #26354A;
+      --text-main: #F8FAFC;
+      --text-body: #CBD5E1;
+      --text-muted: #8493A8;
+      --text-dim: #52637A;
+      --primary-soft: #1E1B4B;
+      --success-bg: rgba(22, 163, 74, 0.15);
+      --warning-bg: rgba(217, 119, 6, 0.15);
+      --danger-bg: rgba(220, 38, 38, 0.15);
+      --info-bg: rgba(2, 132, 199, 0.15);
+      --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html, body {
+      background: var(--surface-canvas);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.5;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Layout structure */
+    .app-layout {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--surface-canvas);
+    }
+
+    /* ============================================================ */
+    /* LEFT SIDEBAR (DARK OBSIDIAN / PURPLE THEME)                 */
+    /* ============================================================ */
+    .sidebar {
+      width: 72px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-sidebar);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 40;
+      user-select: none;
+    }
+
+    .sidebar-top,
+    .sidebar-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #7C3AED, #5E43F3);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(94, 67, 243, 0.3);
+      transition: transform 0.15s ease;
+    }
+
+    .brand-logo:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-sidebar);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--bg-sidebar-hover);
+      color: #FFFFFF;
+    }
+
+    .nav-btn.active {
+      background: var(--bg-sidebar-active);
+      color: #FFFFFF;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-tooltip {
+      position: absolute;
+      left: 60px;
+      background: #0F172A;
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      transform: translateX(-4px);
+      box-shadow: var(--shadow-md);
+      z-index: 100;
+    }
+
+    .nav-btn:hover .nav-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .btn-theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-sidebar);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-theme-toggle:hover {
+      background: var(--bg-sidebar-hover);
+      color: #FFFFFF;
+    }
+
+    /* ============================================================ */
+    /* MAIN WORKSPACE WRAPPER                                       */
+    /* ============================================================ */
+    .main-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: var(--surface-canvas);
+    }
+
+    /* Topbar Header */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      background: var(--surface-card);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .btn-back {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.15s ease;
+    }
+
+    .btn-back:hover {
+      background: var(--surface-hover);
+      color: var(--text-main);
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-upload-trigger {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--surface-card);
+      color: var(--text-body);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-upload-trigger:hover {
+      background: var(--surface-subtle);
+      border-color: var(--text-dim);
+    }
+
+    .btn-copilot-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      border: none;
+      background: var(--primary);
+      color: #FFFFFF;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(94, 67, 243, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .btn-copilot-toggle:hover {
+      background: var(--primary-hover);
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #34D399;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.4);
+    }
+
+    /* Views */
+    .view-container {
+      display: none;
+      padding: 28px 32px 64px 32px;
+      max-width: 1480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .view-container.active-view {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* ============================================================ */
+    /* PROFILE HEADER & SUMMARY BANNER                             */
+    /* ============================================================ */
+    .profile-banner-row {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 16px;
+    }
+
+    .user-profile-header-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .profile-info-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .profile-avatar-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FED7AA, #FDBA74);
+      color: #9A3412;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .profile-meta h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ai-summary-banner {
+      background: var(--surface-card);
+      border: 1px solid var(--border-card);
+      border-left: 4px solid var(--warning);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .banner-text-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.84rem;
+      color: var(--text-body);
+      line-height: 1.45;
+    }
+
+    .banner-text-left i {
+      color: var(--warning);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .btn-consult-copilot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-md);
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .btn-consult-copilot:hover {
+      background: var(--primary-light);
+    }
+
+    /* Anomaly Alert Strip */
+    .anomaly-alert-strip {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #92400E;
+      font-size: 0.84rem;
+    }
+    [data-theme="dark"] .anomaly-alert-strip {
+      background: rgba(217, 119, 6, 0.12);
+      border-color: rgba(217, 119, 6, 0.3);
+      color: #FCD34D;
+    }
+
+    .anomaly-strip-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-rec-action {
+      background: #F59E0B;
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease;
+    }
+
+    .btn-rec-action:hover {
+      background: #D97706;
+    }
+
+    /* ============================================================ */
+    /* 6 KPI METRIC CARDS (CLEAN MINIMAL WHITE)                     */
+    /* ============================================================ */
+    .kpi-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+    }
+
+    .kpi-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 6px;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .kpi-card:hover {
+      border-color: #CBD5E1;
+      box-shadow: var(--shadow-md);
+    }
+
+    .kpi-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .kpi-main-val {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      margin: 2px 0;
+    }
+
+    .kpi-progress-track {
+      height: 4px;
+      background: var(--border-subtle);
+      border-radius: 2px;
+      overflow: hidden;
+      margin: 4px 0 2px 0;
+    }
+
+    .kpi-progress-bar {
+      height: 100%;
+      background: var(--warning);
+      width: 43%;
+      border-radius: 2px;
+    }
+
+    .kpi-footer-note {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Status Badges & Pills */
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .badge-success {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border-color: var(--success-border);
+    }
+
+    .badge-danger {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border-color: var(--danger-border);
+    }
+
+    .badge-warning {
+      background: var(--warning-bg);
+      color: var(--warning-text);
+      border-color: var(--warning-border);
+    }
+
+    .badge-info {
+      background: var(--info-bg);
+      color: var(--info-text);
+      border-color: var(--info-border);
+    }
+
+    .badge-neutral {
+      background: var(--surface-subtle);
+      color: var(--text-body);
+      border-color: var(--border);
+    }
+
+    /* ============================================================ */
+    /* ANALYTICS SECTION (CATEGORY BREAKDOWN & SNAPSHOT)            */
+    /* ============================================================ */
+    .dashboard-analytics-top-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 16px;
+    }
+
+    .chart-panel-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chart-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+
+    .chart-title-tag {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Category Spending Matrix */
+    .category-bars-matrix {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cat-bar-item {
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .cat-bar-item:hover {
+      background: var(--surface-card);
+      border-color: #CBD5E1;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cat-bar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cat-name-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .cat-color-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .cat-val-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .cat-pct-tag {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .cat-progress-track {
+      height: 4px;
+      background: var(--border-subtle);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .cat-progress-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    /* Snapshot Breakdown Rows */
+    .snapshot-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .snapshot-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      font-size: 0.84rem;
+    }
+
+    /* Bottom Grids (Subscriptions & Actions) */
+    .dashboard-analytics-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .subs-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .sub-item-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.15s ease;
+    }
+
+    .sub-item-box:hover {
+      border-color: #CBD5E1;
+      background: var(--surface-card);
+    }
+
+    .sub-icon-name-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sub-logo-box {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      flex-shrink: 0;
+    }
+
+    .logo-netflix { background: #E50914; }
+    .logo-sip { background: #4F46E5; }
+    .logo-gym { background: #F59E0B; }
+    .logo-emi { background: #0D9488; }
+
+    /* ============================================================ */
+    /* FIXED FLOATING COPILOT LAUNCHER WIDGET                      */
+    /* ============================================================ */
+    .copilot-floating-launcher {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-sidebar);
+      color: #FFFFFF;
+      padding: 6px 6px 6px 14px;
+      border-radius: 30px;
+      box-shadow: var(--shadow-float);
+      cursor: pointer;
+      z-index: 50;
+      border: 1px solid var(--border-sidebar);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .copilot-floating-launcher:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px -4px rgba(94, 67, 243, 0.4);
+    }
+
+    .launcher-label-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .launcher-status-active {
+      font-size: 0.68rem;
+      color: #34D399;
+      background: rgba(52, 211, 153, 0.15);
+      padding: 2px 6px;
+      border-radius: 10px;
+    }
+
+    .launcher-avatar-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7C3AED, #5E43F3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      position: relative;
+    }
+
+    .launcher-avatar-btn .live-dot {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 8px;
+      height: 8px;
+      background: #34D399;
+      border-radius: 50%;
+      border: 2px solid var(--bg-sidebar);
+    }
+
+    /* ============================================================ */
+    /* SLIDE-OUT COPILOT DRAWER                                    */
+    /* ============================================================ */
+    .copilot-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .copilot-drawer-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .copilot-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 440px;
+      height: 100vh;
+      background: var(--surface-card);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-drawer);
+    }
+
+    .copilot-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .drawer-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .drawer-title-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .drawer-title-group h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .drawer-title-group p {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .btn-close-drawer {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-close-drawer:hover {
+      color: var(--text-main);
+      background: var(--surface-subtle);
+    }
+
+    .copilot-ai-modes-bar {
+      display: flex;
+      gap: 6px;
+    }
+
+    .ai-mode-pill {
+      padding: 5px 12px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      border: 1px solid var(--border-input);
+      background: var(--surface-card);
+      border-radius: 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .ai-mode-pill:hover {
+      background: var(--surface-subtle);
+      color: var(--text-main);
+    }
+
+    .ai-mode-pill.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: var(--surface-subtle);
+    }
+
+    .copilot-msg-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .copilot-chat-bubble {
+      padding: 14px 16px;
+      border-radius: var(--radius-lg);
+      font-size: 0.84rem;
+      line-height: 1.48;
+      max-width: 90%;
+    }
+
+    .bubble-bot {
+      background: var(--surface-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-card);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bubble-user {
+      background: var(--primary);
+      color: #FFFFFF;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bubble-meta-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .badge-tag-intel {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .tag-fact {
+      background: var(--info-bg);
+      color: var(--info-text);
+    }
+
+    .conf-badge-confirmed {
+      font-size: 0.68rem;
+      background: var(--success-bg);
+      color: var(--success-text);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .drawer-footer {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: var(--surface-card);
+    }
+
+    .footer-pill-shortcuts {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .pill-shortcut {
+      white-space: nowrap;
+      padding: 4px 10px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      font-size: 0.74rem;
+      color: var(--text-body);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pill-shortcut:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--primary-soft);
+    }
+
+    .chat-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-input);
+      border-radius: var(--radius-md);
+      padding: 8px 12px;
+    }
+
+    .chat-input-row input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-size: 0.85rem;
+      font-family: var(--font-main);
+      color: var(--text-main);
+    }
+
+    .btn-send {
+      background: var(--primary);
+      border: none;
+      color: #FFFFFF;
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn-send:hover {
+      background: var(--primary-hover);
+    }
+
+    /* ============================================================ */
+    /* UPLOAD MODAL & DIALOGS                                       */
+    /* ============================================================ */
+    .upload-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .upload-modal-overlay.active {
+      display: flex;
+    }
+
+    .upload-modal-card {
+      background: var(--surface-card);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      width: 480px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .dropzone-container {
+      border: 2px dashed var(--border-input);
+      border-radius: var(--radius-lg);
+      padding: 32px 20px;
+      text-align: center;
+      cursor: pointer;
+      background: var(--surface-subtle);
+      transition: border-color 0.15s ease;
+    }
+
+    .dropzone-container:hover {
+      border-color: var(--primary);
+    }
+
+    .format-chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .format-chip {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .kpi-cards-grid { grid-template-columns: repeat(3, 1fr); }
+      .dashboard-analytics-top-grid,
+      .dashboard-analytics-bottom-grid { grid-template-columns: 1fr; }
+      .profile-banner-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .kpi-cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .sidebar { width: 56px; }
+      .copilot-drawer { width: 100vw !important; }
+      .topbar { padding: 12px 16px; }
+      .view-container { padding: 16px; }
+    }
+  
+    /* Clean Lower Component Utilities */
+    .dashboard-analytics-bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .dashboard-analytics-extra-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px;
+    }
+
+    .clean-icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .clean-item-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+    }
+
+    .clean-item-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 1px;
+    }
+
+    .clean-item-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+    }
+
+    .clean-advice-box {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      font-size: 0.76rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .goal-card-item {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .goal-top-row, .goal-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .clean-trend-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .clean-trend-table th {
+      text-align: left;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .clean-trend-table th:not(:first-child),
+    .clean-trend-table td:not(:first-child) {
+      text-align: right;
+    }
+
+    .clean-trend-table td {
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .upcoming-payments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .upcoming-pay-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .upcoming-pay-row:hover {
+      background: var(--surface-card);
+      border-color: #CBD5E1;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pay-date-pill {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      min-width: 58px;
+      text-align: center;
+    }
+
+    .pay-date-pill.overdue {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border-color: var(--danger-border);
+    }
+
+    .pay-date-pill.today {
+      background: var(--warning-bg);
+      color: var(--warning-text);
+      border-color: var(--warning-border);
+    }
+
+    .pay-info-group {
+      flex: 1;
+      margin-left: 12px;
+    }
+
+    .pay-amount-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      font-size: 0.84rem;
+    }
+
+    /* Clean Lower Component Utilities */
+    .dashboard-analytics-bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .dashboard-analytics-extra-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 16px;
+    }
+
+    .clean-icon-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .clean-item-title {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+    }
+
+    .clean-item-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 1px;
+    }
+
+    .clean-item-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+    }
+
+    .clean-advice-box {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      font-size: 0.76rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .goal-card-item {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .goal-top-row, .goal-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .clean-trend-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    .clean-trend-table th {
+      text-align: left;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .clean-trend-table th:not(:first-child),
+    .clean-trend-table td:not(:first-child) {
+      text-align: right;
+    }
+
+    .clean-trend-table td {
+      padding: 10px 10px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+
+    .upcoming-payments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .upcoming-pay-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .upcoming-pay-row:hover {
+      background: var(--surface-card);
+      border-color: #CBD5E1;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pay-date-pill {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-body);
+      min-width: 58px;
+      text-align: center;
+    }
+
+    .pay-date-pill.overdue {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border-color: var(--danger-border);
+    }
+
+    .pay-date-pill.today {
+      background: var(--warning-bg);
+      color: var(--warning-text);
+      border-color: var(--warning-border);
+    }
+
+    .pay-info-group {
+      flex: 1;
+      margin-left: 12px;
+    }
+
+    .pay-amount-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      font-size: 0.84rem;
+    }
+</style>
+</head>
+
+<body>
+  <div class="app-layout">
+
+    <!-- ============================================================ -->
+    <!-- LEFT UTILITY NAVIGATION (Focused on Dashboard, Hub & Rules)  -->
+    <!-- ============================================================ -->
+    <nav class="sidebar" aria-label="Main Navigation">
+      <div class="sidebar-top">
+        <div class="brand-logo" onclick="switchView('dashboard')" title="Financial Health Intelligence">
+          <i data-lucide="shield-check" style="width: 24px; height: 24px;"></i>
+        </div>
+
+        <button class="nav-btn active" id="nav-dashboard" onclick="switchView('dashboard')" aria-label="Dashboard">
+          <i data-lucide="layout-dashboard" style="width: 20px; height: 20px;"></i>
+          <span class="nav-tooltip">Dashboard Overview</span>
+        </button>
+
+        <button class="nav-btn" id="nav-statements" onclick="switchView('statements')" aria-label="Statements &amp; Multi-Account Hub">
+          <i data-lucide="file-spreadsheet" style="width: 20px; height: 20px;"></i>
+          <span class="nav-tooltip">Statements &amp; Data Hub</span>
+        </button>
+
+        <button class="nav-btn" id="nav-settings" onclick="switchView('settings')" aria-label="Settings &amp; Security">
+          <i data-lucide="sliders" style="width: 20px; height: 20px;"></i>
+          <span class="nav-tooltip">Settings &amp; Privacy Rules</span>
+        </button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button class="nav-btn" onclick="openCopilot('general')" aria-label="Open AI Copilot">
+          <i data-lucide="bot" style="width: 20px; height: 20px; color: var(--accent-blue);"></i>
+          <span class="nav-tooltip">AI Copilot</span>
+        </button>
+        <button class="btn-theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Theme">
+          <i data-lucide="moon" id="theme-icon" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!-- MAIN WORKSPACE                                                -->
+    <!-- ============================================================ -->
+    <div class="main-wrapper">
+
+      <!-- Global Topbar -->
+      <header class="topbar">
+        <div class="breadcrumbs">
+          <button class="btn-back" onclick="switchView('dashboard')" title="Back to Dashboard"><i data-lucide="chevron-left" style="width: 16px; height: 16px;"></i></button>
+          <span id="breadcrumb-title">Executive Financial Intelligence</span>
+          <span style="color: var(--text-dim);">/</span>
+          <span style="font-weight: 500; font-size: 0.82rem; color: var(--text-muted);" id="breadcrumb-subtitle">Category Breakdown &amp; Spending Analytics</span>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn-upload-trigger" onclick="openUploadModal()">
+            <i data-lucide="upload-cloud" style="width: 16px; height: 16px; color: var(--accent-teal);"></i>
+            <span>Upload Multi-Statement</span>
+          </button>
+
+          <button class="btn-copilot-toggle" onclick="openCopilot('general')" title="Open AI Financial Copilot">
+            <span class="pulse-dot"></span>
+            <span>Ask AI Copilot</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- ============================================================ -->
+      <!-- UNIFIED DASHBOARD OVERVIEW VIEW                              -->
+      <!-- ============================================================ -->
+      <main class="view-container active-view" id="view-dashboard">
+        <!-- Top Profile & Executive Safety Alert Banner -->
+        <div class="profile-banner-row">
+          <div class="user-profile-header-card">
+            <div class="profile-info-group">
+              <div class="profile-avatar-box">FC</div>
+              <div class="profile-meta">
+                <h2>Your Financial Snapshot <span class="badge-pill badge-danger" id="runway-badge">— mo Runway</span></h2>
+                <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 8px; margin-top: 2px;" id="data-source-line">
+                  <span id="data-source-label">No data loaded yet</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn-consult-copilot" onclick="openCopilot('whatif')">
+              <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+              <span>Simulate What-If</span>
+            </button>
+          </div>
+
+          <div class="ai-summary-banner" id="safety-banner">
+            <div class="banner-text-left">
+              <i data-lucide="alert-triangle" style="width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px;"></i>
+              <div id="safety-banner-text">
+                <strong>Safety Gate:</strong> Loading your numbers…
+              </div>
+            </div>
+            <button class="btn-consult-copilot" onclick="openCopilot('recs')">
+              <span>View AI Recs</span>
+              <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Uncertain-transaction Alert (real, from P1 confidence scoring) -->
+        <div class="anomaly-alert-strip" id="uncertain-alert" style="display:none;">
+          <div class="anomaly-strip-left">
+            <i data-lucide="shield-alert" style="width: 18px; height: 18px; flex-shrink: 0;"></i>
+            <span id="uncertain-alert-text"></span>
+          </div>
+          <button class="btn-rec-action" style="font-size: 0.76rem; padding: 4px 10px;" onclick="openCopilot('general')">Review in Copilot</button>
+        </div>
+
+        <!-- 6 Live Key Metric Cards -->
+        <div class="kpi-cards-grid">
+          <!-- Total Balance -->
+          <div class="kpi-card">
+            <div class="kpi-head"><span>Liquid Balance</span><i data-lucide="wallet" style="width: 14px; height: 14px; color: var(--text-muted); opacity: 0.85;"></i></div>
+            <div class="kpi-main-val" id="kpi-balance">—</div>
+            <div class="kpi-footer-note"><span class="badge-pill badge-neutral" id="kpi-balance-note">—</span></div>
+          </div>
+
+          <!-- Monthly Inflow -->
+          <div class="kpi-card">
+            <div class="kpi-head"><span>Monthly Income</span><i data-lucide="arrow-down-right" style="width: 14px; height: 14px; color: var(--text-muted); opacity: 0.85;"></i></div>
+            <div class="kpi-main-val" id="kpi-income">—</div>
+            <div class="kpi-footer-note"><span style="color: var(--text-muted);" id="kpi-quality-note">—</span></div>
+          </div>
+
+          <!-- Monthly Outflow -->
+          <div class="kpi-card">
+            <div class="kpi-head"><span>Monthly Outflow</span><i data-lucide="arrow-up-right" style="width: 14px; height: 14px; color: var(--text-muted); opacity: 0.85;"></i></div>
+            <div class="kpi-main-val" id="kpi-spending">—</div>
+            <div class="kpi-footer-note"><span style="color: var(--danger);" id="kpi-cat-count">—</span></div>
+          </div>
+
+          <!-- Liquid Runway -->
+          <div class="kpi-card" id="kpi-buffer-card">
+            <div class="kpi-head"><span>Emergency Buffer</span><i data-lucide="hourglass" style="width: 14px; height: 14px; color: var(--text-muted); opacity: 0.85;"></i></div>
+            <div class="kpi-main-val" id="kpi-buffer" style="color: var(--warning);">—</div>
+            <div class="kpi-progress-track"><div class="kpi-progress-bar" id="kpi-buffer-bar"></div></div>
+            <div class="kpi-footer-note" id="kpi-buffer-note"><span>—</span></div>
+          </div>
+
+          <!-- Pre-Salary Cashflow Forecast -->
+          <div class="kpi-card">
+            <div class="kpi-head"><span>Pre-Salary Balance</span><i data-lucide="piggy-bank" style="width: 14px; height: 14px; color: var(--text-muted); opacity: 0.85;"></i></div>
+            <div class="kpi-main-val" id="kpi-forecast">—</div>
+            <div class="kpi-footer-note"><span class="badge-pill" id="kpi-forecast-badge">—</span></div>
+          </div>
+
+          <!-- Debt & EMI Burden -->
+          <div class="kpi-card">
+            <div class="kpi-head"><span>Total Debt Burden</span><i data-lucide="percent" style="width: 14px; height: 14px; color: var(--text-muted); opacity: 0.85;"></i></div>
+            <div class="kpi-main-val" id="kpi-debt">—</div>
+            <div class="kpi-footer-note"><span style="color: var(--text-muted);" id="kpi-debt-note">—</span></div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- INTERACTIVE CATEGORY SPENDING BREAKDOWN (Full-width bars)    -->
+        <!-- ============================================================ -->
+        <div class="dashboard-analytics-top-grid">
+          <!-- Category Spending Breakdown — full bar matrix, no donut -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <div>
+                <span class="chart-title-tag"><i data-lucide="bar-chart-2" style="width: 17px; height: 17px; color: var(--accent-blue);"></i> Monthly Spending by Category</span>
+                <p style="font-size: 0.74rem; color: var(--text-muted); margin-top: 2px;" id="category-summary-line">Loading…</p>
+              </div>
+            </div>
+
+            <!-- Full-width Category Bars Matrix - populated live from GET /summary category_breakdown -->
+            <div class="category-bars-matrix" id="category-bars-container" style="padding: 4px 0;">
+            </div>
+          </div>
+
+          <!-- Graph 2: Monthly Snapshot & Resource Allocation -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <span class="chart-title-tag"><i data-lucide="layers" style="width: 16px; height: 16px; color: var(--accent-teal);"></i> Monthly Financial Snapshot</span>
+              <span class="badge-pill" id="snapshot-surplus-badge">—</span>
+            </div>
+
+            <div class="snapshot-rows">
+              <div class="snapshot-item"><span>Monthly Income</span><strong style="color: var(--success);" id="snap-income">—</strong></div>
+              <div class="snapshot-item"><span>Average Monthly Spending</span><strong id="snap-expense">—</strong></div>
+              <div class="snapshot-item" style="border-bottom:none;"><span>Debt / Loan EMI</span><strong style="color: var(--danger);" id="snap-emi">—</strong></div>
+              <div class="snapshot-item" style="border-bottom:none;"><span>Net Available Surplus</span><strong style="color: var(--accent-blue);" id="snap-surplus">—</strong></div>
+            </div>
+
+            <div style="margin-top: 8px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.74rem; font-weight: 600; color: var(--text-muted);" id="allocation-labels">
+                <span>Spending</span>
+                <span>Debt</span>
+                <span>Savings</span>
+              </div>
+              <div class="resource-allocation-bar" id="resource-allocation-bar">
+                <div style="width: 0%; background: #0284c7;"></div>
+                <div style="width: 0%; background: #ef4444;"></div>
+                <div style="width: 0%; background: #10b981;"></div>
+              </div>
+            </div>
+
+            <div style="background: var(--surface-subtle); padding: 9px 12px; border-radius: 8px; font-size: 0.76rem; color: var(--text-muted); margin-top: 10px; border: 1px solid var(--border); display:flex; align-items:flex-start; gap:8px;">
+              <i data-lucide="info" style="width:14px;height:14px;flex-shrink:0;margin-top:1px;color:var(--accent-blue);"></i>
+              <span id="snapshot-rule-line">Load your data to see how spending and debt compare to your income.</span>
+            </div>
+          </div>
+        </div>
+
+                <!-- ============================================================ -->
+        <!-- ROW 2: 3 BALANCED ANALYTICAL CARDS (CLEAN ENTERPRISE DESIGN) -->
+        <!-- ============================================================ -->
+        <div class="dashboard-analytics-bottom-grid">
+          <!-- Card 1: Recurring Payments (real data from GET /commitments) -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <span class="chart-title-tag"><i data-lucide="repeat" style="width: 16px; height: 16px; color: var(--text-muted);"></i> Recurring Payments</span>
+              <span class="badge-pill badge-neutral" id="recurring-count-badge">—</span>
+            </div>
+            <div class="subs-items-list" id="recurring-list">
+              <p style="font-size:0.82rem;color:var(--text-muted);">Loading…</p>
+            </div>
+          </div>
+
+          <!-- Card 2: What to do next (real recommendation from GET /summary) -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <span class="chart-title-tag"><i data-lucide="target" style="width: 16px; height: 16px; color: var(--text-muted);"></i> What To Do Next</span>
+              <span class="badge-pill" id="top-rec-conf-badge">—</span>
+            </div>
+            <div class="subs-items-list" id="top-rec-card">
+              <p style="font-size:0.82rem;color:var(--text-muted);">Loading…</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Debt Overview (real data from GET /debt) -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <span class="chart-title-tag"><i data-lucide="pie-chart" style="width: 16px; height: 16px; color: var(--text-muted);"></i> Debt Intelligence</span>
+              <span class="badge-pill badge-success" id="debt-dti-badge">— DTI</span>
+            </div>
+            <div class="subs-items-list" id="loans-list">
+              <p style="font-size:0.82rem;color:var(--text-muted);">Loading…</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- ROW 3: MONTH-OVER-MONTH SUMMARY & UPCOMING COMMITMENTS       -->
+        <!-- ============================================================ -->
+        <div class="dashboard-analytics-extra-grid">
+
+          <!-- Card A: All recommendations (real, from GET /summary -> recommendations, safety-gated by P3) -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <div>
+                <span class="chart-title-tag"><i data-lucide="list-checks" style="width:16px;height:16px;color:var(--text-muted);"></i> All Recommendations</span>
+                <p style="font-size:0.76rem;color:var(--text-muted);margin-top:2px;">Every safety and optimization suggestion the engine currently has, ranked</p>
+              </div>
+            </div>
+            <div id="all-recs-list" style="display:flex;flex-direction:column;gap:10px;">
+              <p style="font-size:0.82rem;color:var(--text-muted);">Loading…</p>
+            </div>
+          </div>
+
+          <!-- Card B: Planned Purchase (real, from GET /commitments -> planned) -->
+          <div class="chart-panel-card">
+            <div class="chart-panel-header">
+              <span class="chart-title-tag"><i data-lucide="shopping-bag" style="width:16px;height:16px;color:var(--text-muted);"></i> Planned Purchase</span>
+            </div>
+            <div id="planned-purchase-box">
+              <p style="font-size:0.82rem;color:var(--text-muted);">Loading…</p>
+            </div>
+          </div>
+
+        </div>
+</main>
+
+      <!-- ============================================================ -->
+      <!-- STATEMENTS & MULTI-ACCOUNT HUB VIEW                          -->
+      <!-- ============================================================ -->
+      <main class="view-container" id="view-statements">
+        <div class="user-profile-header-card">
+          <div>
+            <h2 style="display:flex;align-items:center;gap:8px;"><i data-lucide="folder-open" style="width:20px;height:20px;color:var(--accent-blue);"></i> Statement Upload &amp; Validation</h2>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 2px;">
+              Upload a bank/UPI CSV (date, description, amount, type columns) to replace the current data.
+            </p>
+          </div>
+          <button class="btn-rec-action btn-primary" onclick="openUploadModal()">+ Upload CSV</button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="dropzone-container" onclick="document.getElementById('csv-input').click()">
+            <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--surface-card); display: flex; align-items: center; justify-content: center; color: var(--accent-blue);">
+              <i data-lucide="file-up" style="width: 28px; height: 28px;"></i>
+            </div>
+            <h3 style="font-size: 1.05rem; font-weight: 700;">Upload a bank/UPI CSV</h3>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">.csv files only, up to 2 MB</p>
+            <input id="csv-input" type="file" accept=".csv" style="display:none">
+            <button class="btn-rec-action" style="pointer-events: none;">Browse Files</button>
+          </div>
+
+          <div class="chart-panel-card">
+            <div class="chart-title-tag" style="margin-bottom: 12px;"><i data-lucide="check-circle" style="width: 18px; height: 18px; color: var(--success);"></i> Data Quality Summary</div>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.84rem;" id="stmt-quality-summary">
+              <p style="color:var(--text-muted);">Loading…</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-panel-card">
+          <div class="chart-panel-header">
+            <span class="chart-title-tag"><i data-lucide="table" style="width:16px;height:16px;color:var(--text-muted);"></i> Transactions</span>
+            <span class="badge-pill badge-neutral" id="txn-count-badge">—</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="clean-trend-table" id="transactions-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Confidence</th>
+                </tr>
+              </thead>
+              <tbody id="transactions-tbody">
+                <tr><td colspan="5" style="color:var(--text-muted);">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <!-- ============================================================ -->
+      <!-- SETTINGS & PRIVACY RULES VIEW                                -->
+      <!-- ============================================================ -->
+      <main class="view-container" id="view-settings">
+        <div class="user-profile-header-card">
+          <div>
+            <h2 style="display:flex;align-items:center;gap:8px;"><i data-lucide="shield" style="width:20px;height:20px;color:var(--accent-teal);"></i> Privacy, Security &amp; Safety Controls</h2>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin-top: 2px;">
+              Enterprise-grade privacy protections: Local statement parsing, data masking, and LLM prompt-injection defense.
+            </p>
+          </div>
+        </div>
+
+        <div class="chart-panel-card" style="max-width: 760px;">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle);">
+              <div>
+                <strong style="font-size:0.9rem;">Auto-Mask Sensitive Numbers</strong>
+                <p style="font-size:0.78rem; color:var(--text-muted);">Replaces raw 16-digit card and bank account numbers with (XXXX-8821) before AI processing.</p>
+              </div>
+              <input type="checkbox" checked style="transform: scale(1.3); cursor:pointer;">
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle);">
+              <div>
+                <strong style="font-size:0.9rem;">Prompt Injection &amp; Document Sanitizer</strong>
+                <p style="font-size:0.78rem; color:var(--text-muted);">Strips system prompt injection attempts or malicious payload strings embedded in statement uploads.</p>
+              </div>
+              <span class="badge-pill badge-success">Active &amp; Guarded</span>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid var(--border-subtle);">
+              <div>
+                <strong style="font-size:0.9rem;">No Direct LLM Financial Actions</strong>
+                <p style="font-size:0.78rem; color:var(--text-muted);">AI produces structured advice and simulations only; transactions require explicit user confirmation.</p>
+              </div>
+              <span class="badge-pill badge-info">Enforced</span>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <strong style="font-size:0.9rem;">Emergency Safety Target</strong>
+                <p style="font-size:0.78rem; color:var(--text-muted);">Threshold for minimum safety buffer before non-essential recommendation unlocks.</p>
+              </div>
+              <input type="number" value="3.0" step="0.5" style="width: 70px; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); font-family: var(--font-mono);">
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- ============================================================ -->
+      <!-- FIXED FLOATING COPILOT LAUNCHER (ALWAYS PINNED BOTTOM-RIGHT) -->
+      <!-- ============================================================ -->
+      <div class="copilot-floating-launcher" id="floating-launcher" onclick="openCopilot('general')" title="Open AI Financial Copilot">
+        <div class="launcher-label-box">
+          <span style="color:#10b981;">●</span>
+          <span>Ask Copilot</span>
+          <span class="launcher-status-active">AI Active</span>
+        </div>
+        <div class="launcher-avatar-btn">
+          <i data-lucide="bot" style="width: 22px; height: 22px;"></i>
+          <span class="live-dot"></span>
+        </div>
+      </div>
+
+      <!-- Backdrop overlay for slideout drawer -->
+      <div class="copilot-drawer-backdrop" id="drawer-backdrop" onclick="closeCopilot()"></div>
+
+      <!-- ============================================================ -->
+      <!-- FIXED FULL-HEIGHT COPILOT SIDEBAR PANEL (RIGHT SIDE OF SCREEN)-->
+      <!-- ============================================================ -->
+      <aside class="copilot-drawer" id="copilot-drawer" role="dialog" aria-modal="true" aria-label="AI Financial Brain">
+        <!-- Fixed Header with Native AI Mode Selector -->
+        <div class="drawer-header">
+          <div class="drawer-header-top">
+            <div class="drawer-title-group">
+              <i data-lucide="brain" style="width: 22px; height: 22px; color: #38bdf8;"></i>
+              <div>
+                <h3>AI Financial Brain</h3>
+                <p id="copilot-mode-subtitle">Scenario simulation &amp; risk intelligence</p>
+              </div>
+            </div>
+            <button class="btn-close-drawer" onclick="closeCopilot()" title="Close Copilot (Esc)"><i data-lucide="x" style="width: 16px; height: 16px;"></i></button>
+          </div>
+
+          <!-- NATIVE AI MODE SELECTOR (General / What-If / Recs / Goals) -->
+          <div class="copilot-ai-modes-bar">
+            <button class="ai-mode-pill active" id="mode-general" onclick="selectAIMode('general')">
+              <i data-lucide="message-square" style="width: 12px; height: 12px;"></i> General
+            </button>
+            <button class="ai-mode-pill" id="mode-whatif" onclick="selectAIMode('whatif')">
+              <i data-lucide="sparkles" style="width: 12px; height: 12px;"></i> What-If
+            </button>
+            <button class="ai-mode-pill" id="mode-recs" onclick="selectAIMode('recs')">
+              <i data-lucide="target" style="width: 12px; height: 12px;"></i> Recs
+            </button>
+            <button class="ai-mode-pill" id="mode-goals" onclick="selectAIMode('goals')">
+              <i data-lucide="flag" style="width: 12px; height: 12px;"></i> Goals
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Middle Message & Action Stream -->
+        <div class="drawer-body" id="copilot-body-content">
+          <!-- Dynamic Message Stream -->
+          <div class="copilot-msg-stream" id="chat-stream">
+            <!-- Bot Welcome Bubble -->
+            <div class="copilot-chat-bubble bubble-bot">
+              <div class="bubble-meta-header">
+                <span class="badge-tag-intel tag-fact">Fact</span>
+                <span class="badge-pill conf-badge-confirmed">Confirmed 0.95</span>
+              </div>
+              <div id="copilot-welcome-text">
+                Hello. Loading your numbers… Ask any question or switch to <strong>What-If</strong> or <strong>Recs</strong> mode.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fixed Footer Input -->
+        <div class="drawer-footer">
+          <div class="footer-pill-shortcuts" id="copilot-shortcuts-row">
+            <!-- Dynamically updated based on active AI mode -->
+          </div>
+          <div class="chat-input-row">
+            <i data-lucide="plus" style="width: 16px; height: 16px; color: var(--text-dim); cursor:pointer;" onclick="openUploadModal()"></i>
+            <input type="text" id="copilot-input" placeholder="Ask your copilot anything..." autocomplete="off">
+            <button class="btn-send" id="btn-send-msg" onclick="handleSendInput()" title="Send Query"><i data-lucide="arrow-up" style="width: 16px; height: 16px;"></i></button>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- STATEMENT UPLOAD MODAL                                       -->
+  <!-- ============================================================ -->
+  <div class="upload-modal-overlay" id="upload-modal" onclick="if(event.target===this) closeUploadModal()">
+    <div class="upload-modal-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="font-size: 1.1rem; font-weight: 700;">Multi-Account Statement Upload</h3>
+        <button class="btn-close-drawer" style="background: var(--surface-subtle); color: var(--text-main);" onclick="closeUploadModal()"><i data-lucide="x" style="width: 16px; height: 16px;"></i></button>
+      </div>
+      <div class="dropzone-container" onclick="document.getElementById('modal-csv-input').click()">
+        <i data-lucide="upload-cloud" style="width: 36px; height: 36px; color: var(--accent-blue);"></i>
+        <div style="font-size: 0.9rem; font-weight: 600;">Click to choose a bank/UPI CSV</div>
+        <p style="font-size: 0.78rem; color: var(--text-muted);" id="modal-upload-status">date, description, amount, type columns</p>
+        <input id="modal-csv-input" type="file" accept=".csv" style="display:none">
+      </div>
+      <div style="display: flex; justify-content: space-between; gap: 8px;">
+        <button class="btn-rec-action" onclick="loadSampleData()">Load Sample Data Instead</button>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-rec-action" onclick="closeUploadModal()">Cancel</button>
+          <button class="btn-rec-action btn-primary" onclick="document.getElementById('modal-csv-input').click()">Upload CSV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT STATE ENGINE & COPILOT AI LOGIC                   -->
+  <!-- ============================================================ -->
+  <script>
+    /* ============================================================
+       Wired to the real P1 -> P2 -> P3 backend (see backend/main.py).
+       Contract:
+         GET  /summary         -> {summary, recommendation, recommendations}
+         GET  /transactions    -> {transactions}
+         GET  /forecast        -> {balance_before_salary, days_to_salary}
+         GET  /debt            -> {debt_to_income, total_emi, loans}
+         GET  /commitments     -> {balance, income, days_to_salary,
+                                    variable_expense, data_quality,
+                                    recurring, loans, planned}
+         POST /whatif          -> {cancel?, balance_delta?} -> {before, after}
+         POST /chat            -> {message} -> {label, text, confidence_label?}
+         POST /upload          -> multipart CSV file
+         POST /load-sample     -> seeds the demo dataset
+       Only real fields from this contract are rendered. Sections that the
+       original mock UI invented (multi-account detection, anomaly merchant
+       names, month-over-month history, savings goals, guaranteed-return
+       math) have no backing endpoint and were removed or replaced with the
+       closest real equivalent - see the integration notes in the reply.
+       ============================================================ */
+    const API_BASE = window.API_BASE || '';
+    let DATA = null;
+    let STATE = { currentAIMode: 'general' };
+
+    function inr(n) {
+      return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(n || 0);
+    }
+
+    function formatBuffer(monthsDecimal) {
+      if (monthsDecimal == null) return 'N/A';
+      if (monthsDecimal <= 0) return '0 days';
+      const wholeMonths = Math.floor(monthsDecimal);
+      const days = Math.round((monthsDecimal - wholeMonths) * 30);
+      if (wholeMonths === 0) return `${days} ${days === 1 ? 'day' : 'days'}`;
+      if (days === 0) return `${wholeMonths} ${wholeMonths === 1 ? 'month' : 'months'}`;
+      return `${wholeMonths} mo, ${days} d`;
+    }
+
+    const bandOf = s => s >= 0.85 ? 'Confirmed' : s >= 0.6 ? 'Likely' : 'Uncertain';
+    const pct = s => `${Math.round((s || 0) * 100)}%`;
+    const badgeClassFor = label => label === 'Confirmed' ? 'badge-success' : label === 'Likely' ? 'badge-warning' : 'badge-danger';
+    const tagClassFor = tag => tag === 'Fact' ? 'tag-fact' : tag === 'Prediction' ? 'tag-prediction' : tag === 'Safety Alert' ? 'tag-safety' : 'tag-recommendation';
+    const confClassFor = label => label === 'Confirmed' ? 'conf-badge-confirmed' : label === 'Likely' ? 'conf-badge-likely' : 'conf-badge-uncertain';
+    const CAT_COLORS = ['#0284c7', '#6366f1', '#f59e0b', '#10b981', '#8b5cf6', '#0d9488', '#ec4899', '#ef4444', '#14b8a6', '#a855f7'];
+
+    async function api(path, opts = {}) {
+      const res = await fetch(API_BASE + path, { headers: { 'Content-Type': 'application/json' }, ...opts });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.detail || `${path} failed (${res.status})`);
+      }
+      return res.json();
+    }
+
+    async function loadAll() {
+      const [summaryRes, txRes, forecastRes, debtRes, commitRes] = await Promise.all([
+        api('/summary'), api('/transactions'), api('/forecast'), api('/debt'), api('/commitments'),
+      ]);
+      DATA = {
+        summary: summaryRes.summary,
+        recommendation: summaryRes.recommendation,
+        recommendations: summaryRes.recommendations || [],
+        transactions: txRes.transactions || [],
+        forecast: forecastRes,
+        debt: debtRes,
+        commitments: commitRes,
+      };
+      renderDashboard();
+    }
+
+    async function ensureDataLoaded() {
+      try {
+        await loadAll();
+      } catch (err) {
+        try {
+          await api('/load-sample', { method: 'POST' });
+          await loadAll();
+        } catch (err2) {
+          document.getElementById('data-source-label').textContent = `Could not load data: ${err2.message}`;
+        }
+      }
+    }
+
+    function renderDashboard() {
+      if (!DATA || !DATA.summary) return;
+      const { summary, recommendation, recommendations, transactions, forecast, debt, commitments } = DATA;
+
+      // ---- Profile / safety banner -----------------------------------
+      document.getElementById('data-source-label').textContent =
+        `${summary.transaction_count} transactions · ${summary.months_covered} month(s) of data`;
+
+      const bufferMonths = summary.buffer_months;
+      const runwayBadge = document.getElementById('runway-badge');
+      runwayBadge.textContent = bufferMonths == null ? 'N/A Runway' : `${formatBuffer(bufferMonths)} Runway`;
+      runwayBadge.className = 'badge-pill ' + (bufferMonths != null && bufferMonths < 3 ? 'badge-danger' : 'badge-success');
+
+      const dti = debt.debt_to_income || 0;
+      const fixedPct = commitments.income ? Math.round(((commitments.recurring.reduce((s, r) => s + Number(r.amount || 0), 0) + debt.total_emi) / commitments.income) * 100) : null;
+      const safetyText = document.getElementById('safety-banner-text');
+      const safetyBanner = document.getElementById('safety-banner');
+      if (bufferMonths != null && bufferMonths < 3) {
+        safetyBanner.style.borderLeftColor = 'var(--danger)';
+        safetyText.innerHTML = `<strong>Safety Gate Alert:</strong> Liquid buffer is ${formatBuffer(bufferMonths)} (target: 3 months).` +
+          (fixedPct != null ? ` Fixed commitments comprise ${fixedPct}% of monthly income.` : '');
+      } else {
+        safetyBanner.style.borderLeftColor = 'var(--success)';
+        safetyText.innerHTML = `<strong>Safety Gate:</strong> Your ${formatBuffer(bufferMonths)} buffer meets the 3-month target.`;
+      }
+
+      // ---- Uncertain-transaction alert (real P1 confidence flag) -----
+      const uncertainRow = transactions.find(t => t.confidence_label === 'Uncertain');
+      const alertBox = document.getElementById('uncertain-alert');
+      if (uncertainRow) {
+        alertBox.style.display = '';
+        document.getElementById('uncertain-alert-text').innerHTML =
+          `<strong>Uncertain transaction:</strong> ${inr(uncertainRow.amount)} to "${uncertainRow.description}" couldn't be confidently categorised (${pct(uncertainRow.confidence_score)}). Shown as ${uncertainRow.category} until confirmed.`;
+      } else {
+        alertBox.style.display = 'none';
+      }
+
+      // ---- KPI cards ---------------------------------------------------
+      document.getElementById('kpi-balance').textContent = inr(summary.balance);
+      document.getElementById('kpi-balance-note').textContent = forecast.days_to_salary != null ? `Next salary in ${forecast.days_to_salary}d` : '—';
+
+      document.getElementById('kpi-income').textContent = inr(commitments.income);
+      const dq = summary.data_quality;
+      document.getElementById('kpi-quality-note').textContent = dq != null ? `${summary.data_quality_label} · ${pct(dq)} data quality` : 'No quality score yet';
+
+      document.getElementById('kpi-spending').textContent = inr(summary.avg_expense);
+      document.getElementById('kpi-cat-count').textContent = `${(summary.category_breakdown || []).length} categories parsed`;
+
+      const bufferCard = document.getElementById('kpi-buffer-card');
+      const bufferBar = document.getElementById('kpi-buffer-bar');
+      document.getElementById('kpi-buffer').textContent = formatBuffer(bufferMonths);
+      document.getElementById('kpi-buffer').style.color = (bufferMonths != null && bufferMonths < 3) ? 'var(--warning)' : 'var(--success)';
+      bufferBar.style.width = bufferMonths == null ? '0%' : `${Math.min(100, Math.round((bufferMonths / 3) * 100))}%`;
+      document.getElementById('kpi-buffer-note').innerHTML = `<span>Target: <strong>3 months</strong></span>`;
+
+      document.getElementById('kpi-forecast').textContent = inr(forecast.balance_before_salary);
+      const fBadge = document.getElementById('kpi-forecast-badge');
+      if (forecast.balance_before_salary < 0) { fBadge.textContent = 'Shortfall risk'; fBadge.className = 'badge-pill badge-danger'; }
+      else { fBadge.textContent = 'Safe from shortfall'; fBadge.className = 'badge-pill badge-success'; }
+
+      document.getElementById('kpi-debt').textContent = inr((debt.loans || []).reduce((s, l) => s + Number(l.outstanding || 0), 0));
+      document.getElementById('kpi-debt-note').textContent = `EMI ${inr(debt.total_emi)}/mo (${pct(dti)} DTI)`;
+
+      // ---- Category bars -------------------------------------------
+      const breakdown = summary.category_breakdown || [];
+      const totalExpense = summary.total_expense || 0;
+      document.getElementById('category-summary-line').textContent =
+        `Total Outflow: ${inr(totalExpense)} across ${breakdown.length} categor${breakdown.length === 1 ? 'y' : 'ies'}`;
+      const catContainer = document.getElementById('category-bars-container');
+      catContainer.innerHTML = breakdown.length ? breakdown.map((c, i) => {
+        const color = CAT_COLORS[i % CAT_COLORS.length];
+        const unk = c.category === 'Uncategorized';
+        return `
+          <div class="cat-bar-item" onclick="openCopilot('general')">
+            <div class="cat-bar-header">
+              <div class="cat-name-group">
+                <span class="cat-color-dot" style="background:${color};"></span>
+                <span>${c.category}</span>
+                ${unk ? '<span class="badge-pill badge-danger" style="font-size:0.65rem;padding:1px 6px;">Uncertain</span>' : ''}
+              </div>
+              <div class="cat-val-group">
+                <strong>${inr(c.amount)}</strong>
+                <span class="cat-pct-tag">${c.percent}%</span>
+              </div>
+            </div>
+            <div class="cat-progress-track"><div class="cat-progress-fill" style="width:${c.percent}%;background:${unk ? '#ef4444' : color};"></div></div>
+          </div>`;
+      }).join('') : '<p style="color:var(--text-muted);font-size:0.85rem;">No spending categorised yet.</p>';
+
+      // ---- Monthly snapshot & allocation bar --------------------------
+      const income = commitments.income || 0;
+      const emi = debt.total_emi || 0;
+      const surplus = income - summary.avg_expense - emi;
+      document.getElementById('snap-income').textContent = inr(income);
+      document.getElementById('snap-expense').textContent = inr(summary.avg_expense);
+      document.getElementById('snap-emi').textContent = inr(emi);
+      document.getElementById('snap-surplus').textContent = inr(surplus);
+      const surplusBadge = document.getElementById('snapshot-surplus-badge');
+      surplusBadge.textContent = `${surplus >= 0 ? '+' : ''}${inr(surplus)} Remaining`;
+      surplusBadge.className = 'badge-pill ' + (surplus >= 0 ? 'badge-success' : 'badge-danger');
+
+      const spendPct = income ? Math.min(100, Math.round((summary.avg_expense / income) * 100)) : 0;
+      const debtPct = income ? Math.min(100 - spendPct, Math.round((emi / income) * 100)) : 0;
+      const savePct = Math.max(0, 100 - spendPct - debtPct);
+      const allocBar = document.getElementById('resource-allocation-bar');
+      allocBar.innerHTML = `
+        <div style="width:${spendPct}%;background:#0284c7;"></div>
+        <div style="width:${debtPct}%;background:#ef4444;"></div>
+        <div style="width:${savePct}%;background:#10b981;"></div>`;
+      document.getElementById('allocation-labels').innerHTML =
+        `<span>Spending (${spendPct}%)</span><span>Debt (${debtPct}%)</span><span>Savings (${savePct}%)</span>`;
+      const fixedShare = income ? Math.round(((summary.avg_expense + emi) / income) * 100) : null;
+      document.getElementById('snapshot-rule-line').innerHTML = fixedShare != null
+        ? `<strong>Rule of thumb:</strong> Spending + debt is ${fixedShare}% of income. Below 65% is generally considered healthy.`
+        : 'No income data yet.';
+
+      // ---- Recurring payments card -----------------------------------
+      const recurring = commitments.recurring || [];
+      document.getElementById('recurring-count-badge').textContent = `${recurring.length} item${recurring.length === 1 ? '' : 's'}`;
+      document.getElementById('recurring-list').innerHTML = recurring.length ? recurring.map(r => `
+        <div class="sub-item-box">
+          <div class="sub-icon-name-group">
+            <div class="clean-icon-circle"><i data-lucide="repeat" style="width:15px;height:15px;color:var(--text-muted);"></i></div>
+            <div>
+              <strong class="clean-item-title">${r.name}</strong>
+              <span class="clean-item-sub">${r.kind}${r.unused ? ' · unused 60d+' : ''}</span>
+            </div>
+          </div>
+          <div class="clean-item-right">
+            <strong>${inr(r.amount)}</strong>
+            <span class="badge-pill ${badgeClassFor(bandOf(r.conf))}">${bandOf(r.conf)} · ${pct(r.conf)}</span>
+          </div>
+        </div>`).join('') : '<p style="font-size:0.82rem;color:var(--text-muted);">No recurring payments detected yet.</p>';
+      lucide.createIcons();
+
+      // ---- What to do next (top recommendation) -----------------------
+      const topCard = document.getElementById('top-rec-card');
+      const topBadge = document.getElementById('top-rec-conf-badge');
+      if (recommendation) {
+        topBadge.textContent = `${recommendation.confidence_label} · ${pct(recommendation.confidence)}`;
+        topBadge.className = 'badge-pill ' + badgeClassFor(recommendation.confidence_label);
+        const beforeVal = recommendation.before ? Object.values(recommendation.before)[0] : null;
+        const afterVal = recommendation.after ? Object.values(recommendation.after)[0] : null;
+        topCard.innerHTML = `
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <span class="badge-tag-intel ${tagClassFor(recommendation.tag)}">${recommendation.tag}</span>
+          </div>
+          <strong class="clean-item-title" style="font-size:0.95rem;">${recommendation.title}</strong>
+          <p style="font-size:0.84rem;color:var(--text-body);margin-top:4px;">${recommendation.explanation}</p>
+          ${beforeVal != null && afterVal != null ? `
+          <div class="chat-diff-grid" style="margin-top:10px;">
+            <div class="diff-item"><span>Now</span><strong>${typeof beforeVal === 'number' ? beforeVal : beforeVal}</strong></div>
+            <div class="diff-item"><span>After</span><strong style="color:var(--success);">${typeof afterVal === 'number' ? afterVal : afterVal}</strong></div>
+          </div>` : ''}
+          <p style="font-size:0.74rem;color:var(--text-dim);margin-top:8px;">Nothing happens automatically. You decide whether to act on this.</p>`;
+      } else {
+        topBadge.textContent = 'Confirmed';
+        topBadge.className = 'badge-pill badge-success';
+        topCard.innerHTML = `<p style="font-size:0.85rem;color:var(--text-body);">You're in good shape — no safety or optimization actions needed right now.</p>`;
+      }
+
+      // ---- Debt intelligence card --------------------------------------
+      const loans = commitments.loans || debt.loans || [];
+      document.getElementById('debt-dti-badge').textContent = `${pct(dti)} DTI`;
+      const arbRec = recommendations.find(r => r.type === 'debt_arbitrage');
+      document.getElementById('loans-list').innerHTML = (loans.length ? loans.map(l => `
+        <div class="sub-item-box">
+          <div>
+            <strong class="clean-item-title">${l.name}</strong>
+            <span class="clean-item-sub">${l.rate}% APR</span>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:700;font-size:0.88rem;">${inr(l.outstanding)}</div>
+            <span class="clean-item-sub" style="color:var(--danger);font-weight:600;">EMI: ${inr(l.emi)}/mo</span>
+          </div>
+        </div>`).join('') : '<p style="font-size:0.82rem;color:var(--text-muted);">No loans on file. Add one via POST /profile.</p>')
+        + (arbRec ? `<div class="clean-advice-box"><i data-lucide="zap" style="width:14px;height:14px;color:var(--warning);flex-shrink:0;margin-top:2px;"></i><div><strong>${arbRec.title}:</strong> ${arbRec.explanation}</div></div>` : '');
+      lucide.createIcons();
+
+      // ---- All recommendations list ------------------------------------
+      const allRecsList = document.getElementById('all-recs-list');
+      allRecsList.innerHTML = recommendations.length ? recommendations.map(r => `
+        <div class="sub-item-box" style="align-items:flex-start;">
+          <div>
+            <div style="display:flex;gap:6px;align-items:center;margin-bottom:2px;">
+              <span class="badge-tag-intel ${tagClassFor(r.tag)}">${r.tag}</span>
+              <span class="badge-pill ${badgeClassFor(r.confidence_label)}" style="font-size:0.68rem;">${r.confidence_label} · ${pct(r.confidence)}</span>
+              ${r.gate && r.gate.action === 'ask' ? '<span class="badge-pill badge-warning" style="font-size:0.68rem;">Needs confirmation</span>' : ''}
+            </div>
+            <strong class="clean-item-title">${r.title}</strong>
+            <p style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">${r.explanation}</p>
+          </div>
+        </div>`).join('') : '<p style="font-size:0.82rem;color:var(--text-muted);">No recommendations right now.</p>';
+
+      // ---- Planned purchase card -----------------------------------
+      const planned = commitments.planned;
+      const plannedBox = document.getElementById('planned-purchase-box');
+      if (planned && planned.name) {
+        const timing = recommendations.find(r => r.type === 'purchase_timing');
+        plannedBox.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+            <div>
+              <strong class="clean-item-title" style="font-size:1.02rem;">${planned.name}</strong>
+              <div style="font-size:0.78rem;color:var(--text-muted);">Upcoming target item</div>
+            </div>
+            <strong style="font-family:var(--font-heading);font-size:1.2rem;color:var(--primary);">${inr(planned.amount)}</strong>
+          </div>
+          <div style="margin-top:10px;">
+            ${timing
+              ? `<span class="badge-pill badge-warning">Wait ${commitments.days_to_salary} days until after salary</span><p style="font-size:0.8rem;color:var(--text-muted);margin-top:6px;">${timing.explanation}</p>`
+              : `<span class="badge-pill badge-success">Feasible now</span><p style="font-size:0.8rem;color:var(--text-muted);margin-top:6px;">Buying now still leaves ${inr(forecast.balance_before_salary)} before your next salary.</p>`}
+          </div>`;
+      } else {
+        plannedBox.innerHTML = '<p style="font-size:0.82rem;color:var(--text-muted);">No planned purchase on file. Add one via POST /profile.</p>';
+      }
+
+      // ---- Statements view: quality summary + transactions table -------
+      document.getElementById('stmt-quality-summary').innerHTML = `
+        <div style="display:flex;justify-content:space-between;padding-bottom:6px;border-bottom:1px solid var(--border-subtle);">
+          <span style="color:var(--text-muted);">Opening → Closing Balance</span>
+          <strong>${inr(summary.opening_balance)} → ${inr(summary.balance)}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:6px;border-bottom:1px solid var(--border-subtle);">
+          <span style="color:var(--text-muted);">Months Covered</span>
+          <strong>${summary.months_covered}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:6px;border-bottom:1px solid var(--border-subtle);">
+          <span style="color:var(--text-muted);">Total Income / Expense</span>
+          <strong>${inr(summary.total_income)} / ${inr(summary.total_expense)}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:6px;border-bottom:1px solid var(--border-subtle);">
+          <span style="color:var(--text-muted);">Rows Needing Confirmation</span>
+          <span class="badge-pill ${summary.uncertain_rows ? 'badge-warning' : 'badge-success'}">${summary.uncertain_rows} uncertain</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="color:var(--text-muted);">Data Quality &amp; Confidence</span>
+          <span class="badge-pill ${dq != null ? badgeClassFor(summary.data_quality_label) : 'badge-neutral'}">${dq != null ? `${pct(dq)} ${summary.data_quality_label}` : 'N/A'}</span>
+        </div>`;
+
+      document.getElementById('txn-count-badge').textContent = `${transactions.length} rows`;
+      const tbody = document.getElementById('transactions-tbody');
+      tbody.innerHTML = transactions.length ? transactions.slice().reverse().map(t => `
+        <tr>
+          <td>${t.date}</td>
+          <td>${t.description}</td>
+          <td>${t.category}</td>
+          <td style="color:${t.direction === 'credit' ? 'var(--success)' : 'var(--text-main)'};">${t.direction === 'credit' ? '+' : '-'}${inr(t.amount)}</td>
+          <td><span class="badge-pill ${badgeClassFor(t.confidence_label)}" style="font-size:0.68rem;">${t.confidence_label}</span></td>
+        </tr>`).join('') : '<tr><td colspan="5" style="color:var(--text-muted);">No transactions yet.</td></tr>';
+
+      // ---- Copilot welcome + shortcuts --------------------------------
+      const welcome = document.getElementById('copilot-welcome-text');
+      if (welcome) {
+        welcome.innerHTML = `Hello. Your buffer is currently <strong>${formatBuffer(bufferMonths)}</strong>. Ask any question or switch to <strong>What-If</strong> or <strong>Recs</strong> mode.`;
+      }
+      selectAIMode(STATE.currentAIMode);
+    }
+
+    // ---- View navigation --------------------------------------------
+    function switchView(viewName) {
+      document.querySelectorAll('.view-container').forEach(el => el.classList.remove('active-view'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+      const targetView = document.getElementById('view-' + viewName);
+      const targetNav = document.getElementById('nav-' + viewName);
+      if (targetView) targetView.classList.add('active-view');
+      if (targetNav) targetNav.classList.add('active');
+      const titleMap = { dashboard: 'Financial Health Dashboard', statements: 'Statement Upload & Validation', settings: 'Privacy & Safety Controls' };
+      const subMap = { dashboard: 'Category Breakdown & Spending Analytics', statements: 'Upload data, review quality, and browse transactions', settings: 'Data masking, safety gates & prompt-injection defense' };
+      document.getElementById('breadcrumb-title').textContent = titleMap[viewName] || 'Intelligence Hub';
+      document.getElementById('breadcrumb-subtitle').textContent = subMap[viewName] || '';
+      lucide.createIcons();
+    }
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      const current = root.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      root.setAttribute('data-theme', next);
+      const icon = document.getElementById('theme-icon');
+      if (icon) { icon.setAttribute('data-lucide', next === 'dark' ? 'sun' : 'moon'); lucide.createIcons(); }
+    }
+
+    // ---- Copilot drawer -----------------------------------------------
+    function openCopilot(mode = 'general') {
+      document.getElementById('copilot-drawer').classList.add('open');
+      document.getElementById('drawer-backdrop').classList.add('open');
+      selectAIMode(mode);
+    }
+
+    function closeCopilot() {
+      document.getElementById('copilot-drawer').classList.remove('open');
+      document.getElementById('drawer-backdrop').classList.remove('open');
+    }
+
+    function selectAIMode(mode) {
+      STATE.currentAIMode = mode;
+      document.querySelectorAll('.ai-mode-pill').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('mode-' + mode);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const input = document.getElementById('copilot-input');
+      const shortcutsRow = document.getElementById('copilot-shortcuts-row');
+      const subtitle = document.getElementById('copilot-mode-subtitle');
+      const recurringNames = (DATA && DATA.commitments && DATA.commitments.recurring || []).map(r => r.name);
+      const firstRecurring = recurringNames[0] || 'a subscription';
+
+      if (mode === 'general') {
+        subtitle.textContent = 'Conversational buffer, forecast & category assistant';
+        input.placeholder = 'Ask anything about your buffer, forecast, or spending...';
+        shortcutsRow.innerHTML = `
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What is my emergency buffer?')">Emergency Buffer</span>
+          <span class="pill-shortcut" onclick="sendCopilotMessage('Forecast my balance before next salary')">Salary Forecast</span>
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What should I do next?')">What Should I Do</span>`;
+      } else if (mode === 'whatif') {
+        subtitle.textContent = 'Structured scenario sandbox (real recompute, not guesses)';
+        input.placeholder = `e.g. What if I cancel ${firstRecurring}? or What if I spend 5000 more?`;
+        shortcutsRow.innerHTML = `
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What if I cancel ${firstRecurring}?')">Cancel ${firstRecurring}</span>
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What if my balance changes by -5000?')">Spend ₹5,000 more</span>`;
+      } else if (mode === 'recs') {
+        subtitle.textContent = 'Safety-gated recommendations, ranked by the P3 engine';
+        input.placeholder = 'Ask for the top recommendation or a specific category...';
+        shortcutsRow.innerHTML = `
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What is my top savings recommendation?')">Top Recommendation</span>
+          <span class="pill-shortcut" onclick="sendCopilotMessage('Which subscriptions should I cut?')">Cut Subscriptions</span>
+          <span class="pill-shortcut" onclick="sendCopilotMessage('Should I prepay my loan?')">Prepay Loan?</span>`;
+      } else if (mode === 'goals') {
+        subtitle.textContent = 'Goal tracking is not part of this build yet';
+        input.placeholder = 'Ask about your buffer target or recommendations instead...';
+        shortcutsRow.innerHTML = `
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What is my emergency buffer target?')">Buffer Target</span>
+          <span class="pill-shortcut" onclick="sendCopilotMessage('What should I do next?')">Next Step</span>`;
+      }
+    }
+
+    function handleSendInput() {
+      const input = document.getElementById('copilot-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      sendCopilotMessage(text);
+    }
+
+    function appendCopilotBubble(sender, text, meta = null, diff = null) {
+      const stream = document.getElementById('chat-stream');
+      const bubble = document.createElement('div');
+      bubble.className = `copilot-chat-bubble bubble-${sender}`;
+      let metaHtml = '';
+      if (meta) {
+        metaHtml = `<div class="bubble-meta-header"><span class="badge-tag-intel ${meta.tagClass}">${meta.tag}</span><span class="badge-pill ${meta.confClass}">${meta.conf}</span></div>`;
+      }
+      let diffHtml = '';
+      if (diff) {
+        diffHtml = `
+          <div class="chat-diff-grid">
+            <div class="diff-item"><span>Before</span><strong>${diff.current}</strong></div>
+            <div class="diff-item"><span>After</span><strong style="color:var(--accent-blue);">${diff.after}</strong></div>
+            <div class="diff-item" style="grid-column: span 2;"><span>Net Impact</span><strong style="color:var(--success);">${diff.diff}</strong></div>
+          </div>`;
+      }
+      bubble.innerHTML = `${metaHtml}<div>${text}</div>${diffHtml}`;
+      stream.appendChild(bubble);
+      const body = document.getElementById('copilot-body-content');
+      body.scrollTop = body.scrollHeight;
+    }
+
+    // ---- Real backend-driven chat / what-if routing --------------------
+    async function sendCopilotMessage(query) {
+      openCopilot(STATE.currentAIMode);
+      appendCopilotBubble('user', query);
+      if (!DATA) {
+        appendCopilotBubble('bot', 'Still loading your data — try again in a moment.', { tag: 'Fact', tagClass: 'tag-fact', conf: 'N/A', confClass: 'conf-badge-uncertain' });
+        return;
+      }
+      const q = query.toLowerCase();
+      const recurring = (DATA.commitments && DATA.commitments.recurring) || [];
+
+      try {
+        if (STATE.currentAIMode === 'whatif' || /(what if|simulate|if i cancel)/i.test(q)) {
+          const matched = recurring.find(r => q.includes(r.name.toLowerCase()));
+          const amountMatch = q.match(/-?\d[\d,]*/);
+          let payload = {};
+          let label;
+          if (matched) { payload = { cancel: matched.name }; label = `cancelling ${matched.name}`; }
+          else if (amountMatch) { const delta = parseFloat(amountMatch[0].replace(/,/g, '')); payload = { balance_delta: delta }; label = `a ${delta >= 0 ? '+' : ''}${inr(delta)} balance change`; }
+          else if (recurring[0]) { payload = { cancel: recurring[0].name }; label = `cancelling ${recurring[0].name}`; }
+          else { appendCopilotBubble('bot', 'There is nothing to simulate yet — no recurring payments on file and no amount detected in your message.', { tag: 'Fact', tagClass: 'tag-fact', conf: 'Confirmed', confClass: 'conf-badge-confirmed' }); return; }
+
+          const sim = await api('/whatif', { method: 'POST', body: JSON.stringify(payload) });
+          appendCopilotBubble('bot', `<strong>What-If Simulation:</strong> ${label}.`,
+            { tag: 'Prediction', tagClass: 'tag-prediction', conf: 'Confirmed', confClass: 'conf-badge-confirmed' },
+            { current: `${inr(sim.before.monthly_expense)}/mo · buffer ${formatBuffer(sim.before.buffer_months)}`,
+              after: `${inr(sim.after.monthly_expense)}/mo · buffer ${formatBuffer(sim.after.buffer_months)}`,
+              diff: `Balance before next salary: ${inr(sim.before.balance_before_salary)} → ${inr(sim.after.balance_before_salary)}` });
+          return;
+        }
+
+        if (STATE.currentAIMode === 'recs' && !/[a-z]/i.test(q) === false && DATA.recommendation && /top|recommend/.test(q)) {
+          const r = DATA.recommendation;
+          appendCopilotBubble('bot', `<strong>${r.title}:</strong> ${r.explanation}`,
+            { tag: r.tag, tagClass: tagClassFor(r.tag), conf: `${r.confidence_label} ${r.confidence}`, confClass: confClassFor(r.confidence_label) });
+          return;
+        }
+
+        const res = await api('/chat', { method: 'POST', body: JSON.stringify({ message: query }) });
+        appendCopilotBubble('bot', res.text,
+          { tag: res.label, tagClass: tagClassFor(res.label), conf: `${res.confidence_label || 'Confirmed'}`, confClass: confClassFor(res.confidence_label || 'Confirmed') });
+      } catch (err) {
+        appendCopilotBubble('bot', `Something went wrong talking to the backend: ${err.message}`, { tag: 'Fact', tagClass: 'tag-fact', conf: 'Uncertain', confClass: 'conf-badge-uncertain' });
+      }
+    }
+
+    // ---- Upload / sample-data (real) -----------------------------------
+    async function uploadCsvFile(file) {
+      if (!file) return;
+      const form = new FormData();
+      form.append('file', file);
+      try {
+        const res = await fetch(API_BASE + '/upload', { method: 'POST', body: form });
+        if (!res.ok) { const body = await res.json().catch(() => ({})); throw new Error(body.detail || `Upload failed (${res.status})`); }
+        await loadAll();
+        closeUploadModal();
+        switchView('statements');
+      } catch (err) {
+        const status = document.getElementById('modal-upload-status');
+        if (status) status.textContent = `Could not load "${file.name}": ${err.message}`;
+        alert(`Could not load "${file.name}": ${err.message}`);
+      }
+    }
+
+    async function loadSampleData() {
+      try {
+        await api('/load-sample', { method: 'POST' });
+        await loadAll();
+        closeUploadModal();
+      } catch (err) {
+        alert(`Could not load sample data: ${err.message}`);
+      }
+    }
+
+    document.getElementById('csv-input').addEventListener('change', e => uploadCsvFile(e.target.files[0]));
+    document.getElementById('modal-csv-input').addEventListener('change', e => uploadCsvFile(e.target.files[0]));
+
+    function openUploadModal() { document.getElementById('upload-modal').classList.add('open'); }
+    function closeUploadModal() { document.getElementById('upload-modal').classList.remove('open'); }
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCopilot();
+      if (e.key === 'Enter' && document.activeElement.id === 'copilot-input') handleSendInput();
+    });
+
+    // Initialize UI
+    selectAIMode('general');
+    ensureDataLoaded();
+  </script>
+</body>
+
+</html>        <!-- ============================================================ -->
