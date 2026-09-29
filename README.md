@@ -22,3 +22,25 @@
 | Read CSV, categorize with keyword rules, give each row a basic confidence score | `process_csv(file) -> list[CleanTransaction]` |
 
 **Acceptance:** correct categories on the sample data; unmatched rows get **low confidence**.
+
+
+
+
+# Sharval: Backend Core, Database & Analytics (Stage 4 + Infrastructure)
+
+**Role:** The backbone. Supabase, the single backend service, forecasting, debt analysis, deployment, and **integration lead**.
+
+## 1. Prototype task
+**Goal:** balance + buffer numbers behind an API.
+
+| Task | Deliverable |
+|---|---|
+| Compute current balance, average monthly expense, `buffer_months` | `analyze(transactions) -> {balance, avg_expense, buffer_months}` |
+| Minimal backend | `/upload` and `/summary` |
+
+**Acceptance:** numbers verified **by hand** against the sample data.
+
+**Integration (last 30–45 min of prototype):** wire P1 → P2 → P3 behind `/upload`; P4 points the frontend at it.
+
+---
+
