@@ -44,3 +44,19 @@
 
 ---
 
+# Bhoomi: Frontend & Demo (Stage 7)
+
+**Role:** Everything the judges see. Confidence labels visible everywhere, that's the differentiator.
+
+---
+
+## 1. Prototype task
+**Goal:** demo-ready dashboard on mock JSON.
+
+| Task | Deliverable |
+|---|---|
+| Dashboard: balance, spending-by-category chart, one recommendation card with label | Next.js page |
+
+**Acceptance:** looks demo-ready; switches to the real API with a **one-line change** (e.g. a single `API_BASE` / `USE_MOCK` config).
+
+---
