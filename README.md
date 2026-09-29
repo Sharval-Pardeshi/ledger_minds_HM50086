@@ -44,6 +44,25 @@
 
 ---
 
+# Disha: Recommendations, What-If, Safety Gate & LLM Layer (Stages 5–6 + Chat Brain)
+
+**Role:** Everything that turns numbers into advice, plus the AI layer and the trust mechanism.
+
+---
+
+## 1. Prototype task
+**Goal:** the one rule, with a confidence label.
+
+| Task | Deliverable |
+|---|---|
+| Rule: buffer < 3 months → recommend saving ₹X/month; attach confidence label | `recommend(summary) -> Recommendation` |
+
+**Acceptance:** output matches the Recommendation contract **exactly**.
+
+---
+
+
+
 # Bhoomi: Frontend & Demo (Stage 7)
 
 **Role:** Everything the judges see. Confidence labels visible everywhere, that's the differentiator.
